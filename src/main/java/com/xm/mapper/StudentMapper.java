@@ -43,5 +43,10 @@ public interface StudentMapper {
 	 */
 	public void delete(Integer id);
 	
+	/**
+	 * 根据id查询所有的书
+	 * @param id
+	 */
+	public Student selectBookById(Integer id);
 	
 }

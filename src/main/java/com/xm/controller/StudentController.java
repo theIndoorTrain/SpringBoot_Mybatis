@@ -69,5 +69,14 @@ public class StudentController {
 	public void delete(@PathVariable("id") Integer id) {
 		studentMapper.delete(id);
 	}
+	
+	/**
+	 * 根据id查询所有的书
+	 */
+	@GetMapping("/student/book/{id}")
+	public Student getBooks(@PathVariable("id") Integer id) {
+		Student student = studentMapper.selectBookById(id);
+		return student;
+	}
 
 }

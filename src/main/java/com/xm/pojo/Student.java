@@ -1,5 +1,7 @@
 package com.xm.pojo;
 
+import java.util.List;
+
 /**
  * name:学生实体
  * @author xxm
@@ -15,10 +17,23 @@ public class Student {
 	 */
 	private String name;
 	
+	private List<Book> books;
+	
 	public Student() {
 		// TODO Auto-generated constructor stub
 	}
 	
+	
+	public List<Book> getBooks() {
+		return books;
+	}
+
+
+	public void setBooks(List<Book> books) {
+		this.books = books;
+	}
+
+
 	public int getId() {
 		return id;
 	}

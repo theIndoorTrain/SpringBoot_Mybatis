@@ -29,4 +29,18 @@
 	<delete id="delete" parameterType="int">
 	delete  from student where id=#{id}
 	</delete>
+	
+	<resultMap type="student" id="bookMap">
+		<id property="id" column="id"/>
+		<result property="name" column="name"/>
+		<collection property="books" ofType="book">
+			<id property="id" column="bid"/>
+			<result property="name" column="bname"/>
+			<result property="price" column="price"/>
+		</collection>
+	</resultMap>
+	<!--根据id查询所有的书  -->
+	<select id="selectBookById" parameterType="int" resultMap="bookMap">
+	select a.*,b.id bid,b.name bname,b.price from student a,book b where a.id=b.sid and a.id=#{id};
+	</select>
 </mapper>
