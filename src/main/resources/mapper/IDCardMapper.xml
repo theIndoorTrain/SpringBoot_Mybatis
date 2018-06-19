@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xm.mapper.IDCardMapper">
+
+<!--  学生表与身份证表的一对一映射-->
+<resultMap type="iDCard" id="IDCardOfStudentMap">
+<id property="cardId" column="cardId"/>
+<result property="beginTime" column="begin_time"/>
+<result property="endTime" column="end_time"/>
+<association property="student" javaType="student">
+<id property="id" column="id"/>
+<result property="name" column="name"/>
+</association>
+</resultMap>
+
+<!-- 查出带有学生信息的身份证列表 -->
+<select id="getListIdOfStudent" resultMap="IDCardOfStudentMap">
+select * from id_card a,student b where a.sid=b.id;
+</select>
+
+</mapper>
