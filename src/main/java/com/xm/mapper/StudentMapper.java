@@ -23,7 +23,13 @@ public interface StudentMapper {
 	 * 插入
 	 * @param student
 	 */
-	public void insert(Student student);
+	public int insert(Student student);
+	/**
+	 * 主键回填的插入
+	 * @param student
+	 * @return
+	 */
+	public int insertToId(Student student);
 	
 	/**
 	 * 根据student的id修改
@@ -36,5 +42,6 @@ public interface StudentMapper {
 	 * @param id
 	 */
 	public void delete(Integer id);
+	
 	
 }

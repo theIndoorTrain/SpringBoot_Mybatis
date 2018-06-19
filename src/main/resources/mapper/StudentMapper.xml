@@ -6,7 +6,6 @@
 	<select id="getById" parameterType="int" resultType="student">
 	select * from student where id=#{id}
 	</select>
-	
 	<!-- 查询所有 -->
 	<select id="list" parameterType="int" resultType="student">
 	select * from student
@@ -14,6 +13,10 @@
 	
 	<!-- 插入一个学生 -->
 	<insert id="insert" parameterType="student">
+	insert into student(name) values(#{name})
+	</insert>
+	<!-- 主键回填的插入 -->
+	<insert id="insertToId" parameterType="student" useGeneratedKeys="true" keyProperty="id">
 	insert into student(name) values(#{name})
 	</insert>
 	
