@@ -78,5 +78,16 @@ public class StudentController {
 		Student student = studentMapper.selectBookById(id);
 		return student;
 	}
+	
+	/**
+	 * 根据学生id查询该学生选修的所有课程
+	 * @param id
+	 * @return
+	 */
+	@GetMapping("/student/course/{id}")
+	public Student selectCourseById(@PathVariable("id") Integer id) {
+		Student student = studentMapper.selectCourseById(id);
+		return student;
+	}
 
 }

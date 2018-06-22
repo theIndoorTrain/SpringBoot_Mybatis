@@ -30,9 +30,12 @@
 	delete  from student where id=#{id}
 	</delete>
 	
-	<resultMap type="student" id="bookMap">
+	<resultMap type="student" id="studentMap">
 		<id property="id" column="id"/>
 		<result property="name" column="name"/>
+	</resultMap>
+	
+	<resultMap type="student" id="bookMap" extends="studentMap">
 		<collection property="books" ofType="book">
 			<id property="id" column="bid"/>
 			<result property="name" column="bname"/>
@@ -42,5 +45,19 @@
 	<!--根据id查询所有的书  -->
 	<select id="selectBookById" parameterType="int" resultMap="bookMap">
 	select a.*,b.id bid,b.name bname,b.price from student a,book b where a.id=b.sid and a.id=#{id};
+	</select>
+	
+	<resultMap type="student" id="courseMap" extends="studentMap">
+		<collection property="studentCourses" ofType="studentCourse">
+			<result property="sorce" column="sorce"/>
+			<collection property="courses" ofType="course">
+				<id property="id" column="cid"/>
+				<result property="name" column="cname"/>
+			</collection>
+		</collection>
+	</resultMap>
+	<!-- 根据学生id查询该学生选修的所有课程 -->
+	<select id="selectCourseById" parameterType="int" resultMap="courseMap" >
+		select a.*,b.sorce,c.id cid,c.name cname from student a,student_course b,course c where a.id=b.sid and b.cid=c.id and a.id=#{id}
 	</select>
 </mapper>

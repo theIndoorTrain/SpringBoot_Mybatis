@@ -48,5 +48,11 @@ public interface StudentMapper {
 	 * @param id
 	 */
 	public Student selectBookById(Integer id);
+	/**
+	 * 根据学生id查询该学生选修的所有课程
+	 * @param id
+	 * @return
+	 */
+	public Student selectCourseById(Integer id);
 	
 }

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xm.mapper.CourseMapper">
+	<resultMap type="course" id="courseMap">
+		<id property="id" column="id"/>
+		<result property="name" column="name"/>
+	</resultMap>
+	<resultMap type="course" id="studentMap" extends="courseMap">
+		<collection property="studentCourses" ofType="studentCourse">
+			<result property="sorce" column="sorce"/>
+			<collection property="students" ofType="student">
+				<id property="id" column="sid"/>
+				<result property="name" column="sname"/>
+			</collection>
+		</collection>
+	</resultMap>
+	<!-- 根据课程id查询选修此课程的全部学生 -->
+	<select id="selectStudentById" parameterType="int" resultMap="studentMap">
+	select a.*,b.sorce,c.id sid,c.name sname from student c,student_course b,course a where a.id=b.cid and b.sid=c.id and a.id=#{id}
+	</select>
+</mapper>
