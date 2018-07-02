@@ -2,6 +2,8 @@ package com.xm.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.xm.pojo.Student;
 
 public interface StudentMapper {
@@ -54,5 +56,27 @@ public interface StudentMapper {
 	 * @return
 	 */
 	public Student selectCourseById(Integer id);
+	/**
+	 * 根据name查询
+	 * @param name
+	 * @return
+	 */
+	public Student getByName(String name);
+	
+	/**
+	 * 根据用户名和id同时查询
+	 * @param id
+	 * @param name
+	 * @return
+	 */
+	public Student getStudentByIdAndName(@Param("id")Integer id,@Param("name")String name);
+	
+	/**
+	 * 根据用户名和id同时查询
+	 * @param id
+	 * @param name
+	 * @return
+	 */
+	public Student getStudentByIdAndName(Student student);
 	
 }

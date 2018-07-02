@@ -28,6 +28,18 @@ public class StudentTest {
 		System.out.println(student.getId());
 		
 	}
+	@Test
+	public void selectStudent() {
+		
+		/*Student student = studentMapper.getByName("郭小明");*/
+		/*Student student = studentMapper.getStudentByIdAndName(1, "郭小明");*/
+		Student student = new Student();
+		student.setName("郭小明");
+		student.setId(1);
+		Student student2 = studentMapper.getStudentByIdAndName(student);
+		System.out.println(student2);
+		
+	}
 	
 
 }

@@ -60,4 +60,15 @@
 	<select id="selectCourseById" parameterType="int" resultMap="courseMap" >
 		select a.*,b.sorce,c.id cid,c.name cname from student a,student_course b,course c where a.id=b.sid and b.cid=c.id and a.id=#{id}
 	</select>
+	
+	<!-- 根据name查询 -->
+	<select id="getByName" resultType="student">
+	<!-- select * from student where name=#{name} -->
+	select * from student where name=#{names}
+	</select>
+	<!-- 根据用户名和id同时查询 -->
+	<select id="getStudentByIdAndName" resultType="student">
+	select * from student where name=#{name} and id=#{id} 
+	<!-- select * from student where name=#{param2} and id=#{param1}  -->
+	</select>
 </mapper>
